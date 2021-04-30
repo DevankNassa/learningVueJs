@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=2.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="rrrr">
+       <input type="text" id="input" v-model='message'> 
+       <p>The value in the input is {{message}}.</p>
+    </div>
+
+   <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+
+
+    <script>
+
+        // let data = {
+        //     message : 'Hello Worold !'
+        // };
+
+        // document.querySelector('#input').value = data.message;
+
+        new Vue({
+            el: '#rrrr',
+
+            data: {
+            message : 'Hello Worold !'
+        } 
+        }) 
+
+
+    </script>
+
+
+</body>
+</html>

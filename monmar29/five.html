@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+<style>
+	.color-red {
+		color: red;
+	}
+</style>
+
+<body>
+	<div id="root">
+
+		<h1 v-text="reverseMessage"> </h1>
+		<h2>All Tasks</h2>
+		<ol>
+			<li v-for="task in tasks" v-text="task.description"></li>
+		</ol>
+		<h2>Complete task</h2>
+		<ol>
+			<li v-for="task in cTasks" >
+				{{ task.description }}
+				<button @click="toggleState(task)">
+					Mark Incomplete
+				</button>
+
+
+			</li>
+		</ol>
+		<h2>Incomplete task</h2>
+		<ol>
+			<li v-for="task in iTasks" >
+					{{ task.description }} 
+				<button @click="toggleState(task)">
+					Mark Complete
+				</button>
+
+			</li>
+		</ol>
+	</div>
+
+	<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+
+
+	<script>
+
+
+		let app = new Vue({
+
+			el: '#root',
+			data: {
+				message: "abcdef ghijkl mnop",
+				rMessage: "",
+				tasks: [
+
+					{ description: 'Go to the store C', completed: true },
+
+					{ description: 'Finish screencast I', completed: false },
+
+					{ description: 'Make donation I', completed: false },
+
+					{ description: 'Clear inbox I', completed: false },
+
+					{ description: 'Make dinner I', completed: false },
+
+					{ description: 'Clean room C', completed: true }
+
+				]
+			},
+			computed: {
+				reverseMessage() {
+					return this.message.split('').reverse().join('');
+				},
+				cTasks() {
+					return this.tasks.filter(function (task) {
+						return task.completed == true;
+					});
+				},
+				iTasks() {
+					return this.tasks.filter(function (task) {
+						return task.completed == false;
+					});
+				}
+			},
+			methods:{
+				toggleState(task) {
+					// this.tasks.filter(function(lTask){
+					// 	if(lTask.description == task.description){
+					// 		lTask.completed = ! lTask.completed;
+					// 	}
+					// });
+						task.completed = !task.completed;
+				}
+			}
+		});
+
+	</script>
+
+
+</body>
+
+</html>
